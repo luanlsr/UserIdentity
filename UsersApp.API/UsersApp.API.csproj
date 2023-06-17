@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>c2a09c83-6617-4aa9-bea5-f809c3f28baf</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UsersApp.Application\UsersApp.Application.csproj" />
+    <ProjectReference Include="..\UsersApp.Domain\UsersApp.Domain.csproj" />
+    <ProjectReference Include="..\UsersApp.Infra.Data\UsersApp.Infra.Data.csproj" />
+    <ProjectReference Include="..\UsersApp.Infra.Identity\UsersApp.Infra.Identity.csproj" />
+    <ProjectReference Include="..\UsersApp.Infra.Messages\UsersApp.Infra.Messages.csproj" />
+  </ItemGroup>
+
+</Project>
