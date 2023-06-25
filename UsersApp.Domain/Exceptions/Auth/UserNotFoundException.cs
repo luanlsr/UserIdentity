@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UsersApp.Domain.Exceptions.Users
+namespace UsersApp.Domain.Exceptions.Auth
 {
     public class UserNotFoundException : Exception
     {

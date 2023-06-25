@@ -21,7 +21,9 @@ namespace UsersApp.API.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<MessageSettings>(configuration.GetSection("MessageSettings"));
-            services.AddTransient<IUserAppService, UserAppService>();
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IAuthDomainService, AuthDomainService>();
             services.AddTransient<IUserDomainService, UserDomainService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserMessageProducer, UserMessageProducer>();

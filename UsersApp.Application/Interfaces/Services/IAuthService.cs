@@ -8,7 +8,7 @@ using UsersApp.Application.Models.Responses;
 
 namespace UsersApp.Application.Interfaces.Services
 {
-    public interface IUserAppService : IDisposable
+    public interface IAuthService : IDisposable
     {
         AuthenticateResponseDTO Authenticate(AuthenticateRequestDTO dto);
         CreateAccountResponseDTO CreateAccount(CreateAccountRequestDTO dto);

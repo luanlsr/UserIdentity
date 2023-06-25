@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UsersApp.Domain.Entities;
+using UsersApp.Domain.Entities.User;
 using UsersApp.Infra.Data.Configurations;
 
 namespace UsersApp.Infra.Data.Contexts

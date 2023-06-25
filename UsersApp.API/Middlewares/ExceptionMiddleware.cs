@@ -1,7 +1,8 @@
 ﻿using FluentValidation;
 using System.Net;
 using UsersApp.API.Models;
-using UsersApp.Domain.Exceptions.Users;
+using UsersApp.Domain.Exceptions.Auth;
+using UsersApp.Domain.Exceptions.User;
 
 namespace UsersApp.API.Middlewares
 {
@@ -31,6 +32,10 @@ namespace UsersApp.API.Middlewares
             {
                 await HandleExceptionAsync(context, e);
             }
+            catch (NoRegistredUserException e)
+            {
+                await HandleExceptionAsync(context, e);
+            }
             catch (ValidationException e)
             {
                 await HandleExceptionAsync(context, e);
@@ -51,22 +56,6 @@ namespace UsersApp.API.Middlewares
                 _ => (int)HttpStatusCode.InternalServerError
             };
 
-            //switch (exception)
-            //{
-            //    case EmailJaCadastradoException:
-            //        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            //        break;
-            //    case AcessoNegadoException:
-            //        context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-            //        break;
-            //    case UsuarioNaoEncontradoException:
-            //        context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-            //        break;
-            //    case Exception:
-            //        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            //        break;
-            //}
-
             context.Response.ContentType = "application/json";
 
             var model = new ErrorViewModel();
@@ -76,7 +65,4 @@ namespace UsersApp.API.Middlewares
             await context.Response.WriteAsync(model.ToString());
         }
     }
-
-
-
 }

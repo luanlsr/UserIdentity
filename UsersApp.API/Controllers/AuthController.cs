@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UsersApp.Application.Interfaces.Services;
@@ -9,11 +10,11 @@ namespace UsersApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class AuthController : BaseController
     {
-        private readonly IUserAppService _userAppService;
+        private readonly IAuthService _userAppService;
 
-        public UsersController(IUserAppService userAppService)
+        public AuthController(IAuthService userAppService)
         {
             _userAppService = userAppService;
         }
@@ -23,7 +24,7 @@ namespace UsersApp.API.Controllers
         /// </summary>
         //[Authorize]
         [HttpPost]
-        [Route("/create-account")]
+        [Route("create-account")]
         [ProducesResponseType(typeof(CreateAccountResponseDTO), StatusCodes.Status200OK)]
         public IActionResult CreateAccount(CreateAccountRequestDTO userDto)
         {
@@ -34,7 +35,7 @@ namespace UsersApp.API.Controllers
         /// Authenticate a user 
         /// </summary>
         [HttpPost]
-        [Route("/authenticate")]
+        [Route("authenticate")]
         [ProducesResponseType(typeof(AuthenticateResponseDTO), StatusCodes.Status200OK)]
         public IActionResult Authenticate(AuthenticateRequestDTO userDto)
         {
@@ -46,7 +47,7 @@ namespace UsersApp.API.Controllers
         /// Reset the password
         /// </summary>
         [HttpPost]
-        [Route("/reset-password")]
+        [Route("reset-password")]
         [ProducesResponseType(typeof(ResetPasswordResponseDTO), StatusCodes.Status200OK)]
         public IActionResult ResetPassword(ResetPasswordRequestDTO userDto)
         {

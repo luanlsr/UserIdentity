@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UsersApp.Application.Models.Producers;
 using UsersApp.Application.Models.Responses;
-using UsersApp.Domain.Entities;
+using UsersApp.Domain.Entities.User;
 
 namespace UsersApp.Application.Profiles
 {
@@ -20,6 +20,7 @@ namespace UsersApp.Application.Profiles
             CreateMap<User, CreateAccountResponseDTO>();
             CreateMap<User, AuthenticateResponseDTO>();
             CreateMap<User, ResetPasswordResponseDTO>();
+            CreateMap<User, UsersResponseDTO>();
 
             CreateMap<User, UserMessageDTO>()
                 .AfterMap((model, dto) =>

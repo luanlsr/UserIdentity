@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UsersApp.Domain.Entities;
-using UsersApp.Domain.Exceptions.Users;
+using UsersApp.Domain.Entities.User;
+using UsersApp.Domain.Exceptions.Auth;
+using UsersApp.Domain.Exceptions.User;
 using UsersApp.Domain.Interfaces.Repositories;
 using UsersApp.Domain.Interfaces.Services;
 
@@ -19,42 +20,39 @@ namespace UsersApp.Domain.Services
             _unitOfWork = unitOfWork;
         }
 
-        public User Authenticate(string email, string password)
+        public List<User> GetAll()
         {
-            var user = _unitOfWork.UserRepository.Get(u => u.Email.Equals(email) && u.Password.Equals(password));
-            if (user == null)
+            var users = _unitOfWork?.UserRepository.GetAll();
+            if (users == null)
             {
-                throw new DeniedAccessException();
+                throw new NoRegistredUserException();
             }
-            return user;
+            return users;
         }
 
-        public void CreateAccount(User user)
+        public List<User> GetAll(Func<User, bool> where)
         {
-            var registredUser = _unitOfWork.UserRepository.Get(e => e.Email.Equals(user.Email));
-            if (registredUser != null)
-            {
-                throw new EmailAllReadyExistsException();
-            }
-
-            _unitOfWork.UserRepository.Add(user);
-            _unitOfWork.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public User ResetPassword(string email)
+        public void Delete(User model)
         {
-            var user = _unitOfWork?.UserRepository.Get(u => u.Email.Equals(email));
-            if (user == null)
-            {
-                throw new UserNotFoundException();
-            }
-            //TODO
-            return user;
+            throw new NotImplementedException();
         }
 
-        public void Dispose()
+        public User Get(Func<User, bool> where)
         {
-            _unitOfWork.UserRepository.Dispose();
+            throw new NotImplementedException();
+        }
+
+        public User GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(User model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

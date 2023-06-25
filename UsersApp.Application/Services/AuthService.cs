@@ -10,20 +10,20 @@ using UsersApp.Application.Interfaces.Services;
 using UsersApp.Application.Models.Producers;
 using UsersApp.Application.Models.Requests;
 using UsersApp.Application.Models.Responses;
-using UsersApp.Domain.Entities;
+using UsersApp.Domain.Entities.User;
 using UsersApp.Domain.Interfaces.Services;
-using static UsersApp.Application.Services.UserAppService;
+using static UsersApp.Application.Services.AuthService;
 
 namespace UsersApp.Application.Services
 {
-    public class UserAppService : IUserAppService
+    public class AuthService : IAuthService
     {
         private readonly IMapper _mapper;
         private readonly ITokenCreator _tokenCreator;
-        private readonly IUserDomainService _userDomainService;
+        private readonly IAuthDomainService _userDomainService;
         private readonly IUserMessageProducer _userMessage;
 
-        public UserAppService(IMapper mapper, ITokenCreator tokenCreator, IUserDomainService userDomainService, IUserMessageProducer userMessage)
+        public AuthService(IMapper mapper, ITokenCreator tokenCreator, IAuthDomainService userDomainService, IUserMessageProducer userMessage)
         {
             _mapper = mapper;
             _tokenCreator = tokenCreator;

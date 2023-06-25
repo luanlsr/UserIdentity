@@ -9,8 +9,6 @@ namespace UsersApp.Application.Models.Requests
 {
     public class ResetPasswordRequestDTO
     {
-        //[EmailAddress(ErrorMessage = "Endereço de email inválido")]
-        //[Required(ErrorMessage = "Informe o email.")]
         public string? Email { get; set; }
     }
 }

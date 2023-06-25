@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UsersApp.Application.Helpers;
 using UsersApp.Application.Models.Requests;
-using UsersApp.Domain.Entities;
+using UsersApp.Application.Models.Responses;
+using UsersApp.Domain.Entities.User;
 
 namespace UsersApp.Application.Profiles
 {
@@ -30,6 +31,8 @@ namespace UsersApp.Application.Profiles
                 {
                     model.Password = SHA1Helper.Encrypt(dto.Password);
                 });
+
+            CreateMap<UsersResponseDTO, User>();
         }
     }
 
